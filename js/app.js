@@ -19,20 +19,24 @@ lightbox.addEventListener('click', e => {
     lightbox.classList.remove('active')
   })
 
-  const search=document.querySelector(".search-box input"),
-  container=document.querySelectorAll(".container");
+  let search= document.querySelector(".search-box"),
+  container= document.querySelectorAll(".container");
 
-  search.addEventListener("keyup", e =>{
-      if(e.key =="enter"){
-          let searchValue = search.value,
-          value= searchValue.tolowerCase();
-          container.forEach(container=>{
-          if(value === container.dataset.name){
-              return image.style.display ="block";
-          }
-          image.style.display="none";
-          console.log(value);
-      })
-     
-    }  
-  })
+
+searchBox.oninput = () =>{
+images.forEach(hide => hide.style.display ='none');
+let value = searchBox.value;
+images.forEach(filter =>{
+let titel= filter.getAttribute('zoek');
+if(value == titel){
+filter.style.display='block';
+
+}
+if(searchBox.value==''){
+  filter.style.display='block'  
+}
+
+})
+
+
+}
