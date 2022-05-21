@@ -23,16 +23,16 @@ lightbox.addEventListener('click', e => {
   container= document.querySelectorAll(".container");
 
 
-searchBox.oninput = () =>{
+search.oninput = () =>{
 images.forEach(hide => hide.style.display ='none');
-let value = searchBox.value;
+let value = search.value;
 images.forEach(filter =>{
 let titel= filter.getAttribute('zoek');
 if(value == titel){
 filter.style.display='block';
 
 }
-if(searchBox.value==''){
+if(search.value==''){
   filter.style.display='block'  
 }
 
