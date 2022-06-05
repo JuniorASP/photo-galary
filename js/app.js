@@ -1,45 +1,22 @@
-const lightbox = document.getElementById('lightbox') 
-const images = document.querySelectorAll('img')
-images.forEach(image => {
-  image.addEventListener('click', e => {
-    lightbox.classList.add('active')
-    const text = document.createElement('div')
-    const img = document.createElement('img')
-    const alt = image.getAttribute('alt')
-    img.src = image.src
-    text.insertAdjacentText('beforeend', alt)
+baguetteBox.run('.container');
 
-    while (lightbox.firstChild) {
-      lightbox.removeChild(lightbox.firstChild)
-    }
-    lightbox.appendChild(img)
-    lightbox.appendChild(text)
-  })
-})
-lightbox.addEventListener('click', e => {
-    if (e.target !== e.currentTarget) return
-    lightbox.classList.remove('active')
-  })
+let inputLog = document.getElementById("search");
 
-  let search= document.getElementById("mi-search"),
-  container= document.querySelectorAll(".container");
+inputLog.addEventListener('keyup', searchImage);
 
+function searchImage() {
+    filterValue = document.getElementById("search").value.toLowerCase()
 
-search.oninput = () =>{
-let value = search.value;
-images.forEach(image => image.style.display ='none');
-images.forEach(image =>{
-let titel= image.getAttribute(`id`);
-if(value == titel){
-image.style.display ='block';
+    const anchors = document.querySelectorAll('a');
 
-}else if(value == ''){
-  image.style.display ='block';
-
-}
-
-
-})
-
-
-}
+    for (i = 0; i < anchors.length; i++) { 
+        let captions = anchors[i].getAttribute("data-caption").toLowerCase();
+        let filter = captions.includes(filterValue);
+        
+        if (filter === true) {
+            anchors[i].style.display = 'container';
+          } else {
+              anchors[i].style.display = 'none';
+          };
+    };
+};
