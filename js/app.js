@@ -1,5 +1,6 @@
 baguetteBox.run('.container');
 
+
 let inputLog = document.getElementById("search");
 
 inputLog.addEventListener('keyup', searchImage);
@@ -14,9 +15,11 @@ function searchImage() {
         let filter = captions.includes(filterValue);
         
         if (filter === true) {
-            anchors[i].style.display = 'container';
+            anchors[i].style.display = '';
           } else {
               anchors[i].style.display = 'none';
+              
           };
     };
 };
+
